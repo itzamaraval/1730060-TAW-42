@@ -1,0 +1,4 @@
+php artisan tinker
+use Spatie\Permission\Models\Role;
+$role = Role::create(['name' => 'admin']);
+$role = Role::create(['name' => 'gamer']);
