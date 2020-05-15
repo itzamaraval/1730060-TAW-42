@@ -7,7 +7,7 @@
 		}
 
 		#ENLACES
-		public function enlacesPaginasCOntroller(){
+		public function enlacesPaginasController(){
 			if(isset($_GET['action'])){
 				$enlaces = $_GET['action']
 			}else{
