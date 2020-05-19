@@ -26,12 +26,13 @@ class Producto extends Conexion{
 		#Regresar una respuesta satisfactoria o no
 
 		if($stmt->execute()){
-			return "success";	
+			return "success";
+			$stmt->close();	
 		}else{
 			return "error";
 		}
 
-		$stmt->close();
+		//$stmt->close();
 
 	}
 
