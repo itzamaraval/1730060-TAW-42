@@ -107,10 +107,7 @@
 
 			#ACTUALIZAR USUARIO
 			public function actualizarUsuarioController(){
-				echo "ENTRA ACTUALIZAR";
 				if(isset($_POST["idEditar"])){
-					echo "ENTRA POST";
-
 					$datosController = array("id"=>$_POST["idEditar"],
 										      "usuario"=>$_POST["usuarioEditar"],
 										      "password"=>$_POST["passwordEditar"],
