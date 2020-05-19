@@ -62,6 +62,9 @@
 		public function editarUsuarioModel($datosModel,$tabla){
 			$stmt=Conexion::conectar()->prepare("SELECT id,usuario,password,email FROM $tabla WHERE id=:id");
 			$stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+			$stmt->execute();
+			
+			//echo $datosModel;
 			return $stmt->fetch();
 			$stmt->close();
 

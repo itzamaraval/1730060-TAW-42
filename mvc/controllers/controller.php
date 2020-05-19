@@ -85,6 +85,8 @@
 			#EDITAR USUARIO
 		public function editarUsuarioController(){
 			$datosController = $_GET["id"];
+			//echo $datosController;
+
 			$respuesta= Datos::editarUsuarioModel($datosController,"usuarios");
 
 			#Diseñar la estructura de un formulario para que se muestren los datos de la consulta generada en el modelo
@@ -96,6 +98,7 @@
 				   <input type="text" value="'.$respuesta["password"].'" name="passwordEditar" required>
 				   <input type="text" value="'.$respuesta["email"].'" name="emailEditar" required>
 
+				   <input type="submit" value="Guardar">
 
 			';
 
@@ -104,14 +107,15 @@
 
 			#ACTUALIZAR USUARIO
 			public function actualizarUsuarioController(){
+				echo "ENTRA ACTUALIZAR";
+				if(isset($_POST["idEditar"])){
+					echo "ENTRA POST";
 
-				if(isset($_POST["usuarioEditar"])){
 					$datosController = array("id"=>$_POST["idEditar"],
 										      "usuario"=>$_POST["usuarioEditar"],
 										      "password"=>$_POST["passwordEditar"],
-										      "email"=>$_POST["emailEditar"]);
-				
-				$respuesta=Datos::actualizarUsuariosModel($datosController,"usuarios");
+											  "email"=>$_POST["emailEditar"]);
+					$respuesta=Datos::actualizarUsuarioModel($datosController,"usuarios");
 
 				if($respuesta=="success"){
 					header("location:index.php?action=cambio");
