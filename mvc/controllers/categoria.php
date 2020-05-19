@@ -19,23 +19,23 @@ class CategoriaController{
 		include $respuesta;
 	}
 
-	#REGISTRO DE USUARIOS
-	public function registroUsuarioController(){
+	#REGISTRO DE CATEGORIAS
+	public function registroCategoriaController(){
 
-		if(isset($_POST["usuarioRegistro"])){
+		if(isset($_POST["categoriaRegistro"])){
 			#Recibe a traves del método post el name(html) de usuario,contraseña y email, se almacenan los datos en una propiedad de tipo array asociativo con sus respectivas propiedades (usuario,contraseña, email).
 
-			$datosController = array("usuario"=>$_POST["usuarioRegistro"],"password"=>$_POST["passwordRegistro"],"email"=>$_POST["emailRegistro"]);
+			$datosController = array("nombre"=>$_POST["categoriaRegistro"]);
 
 
-			#Se le dice al modelo models/crud.php (Datos::regostroUsuarioModel),que en modelo Datos el metodo registroUsuariosModel reciba en sus parametros los valores $datosController y el nombre de la tabla a la cual debe conectarse(usuarios)
+			#Se le dice al modelo models/crud.php (Categoria::regostroUsuarioModel),que en modelo Datos el metodo registroUsuariosModel reciba en sus parametros los valores $datosController y el nombre de la tabla a la cual debe conectarse(usuarios)
 
-			$respuesta = Datos::registroUsuariosModel($datosController,"usuarios");
+			$respuesta = Categoria::registroCategoriaModel($datosController,"categorias");
 
 			#Se imprime la respuesta en la vista
 
 			if($respuesta== "success"){
-				header("location:index.php?action=ok");
+				header("location:index.php?action=okCategoria");
 			} else{
 				header("location:index.php");
 
@@ -44,59 +44,35 @@ class CategoriaController{
 		}
 	}
 
-	public function ingresoUsuarioController(){
-		if(isset($_POST["usuarioIngreso"])){
 
-			$datosController=array("usuario"=>$_POST["usuarioIngreso"],"password"=>$_POST["passwordIngreso"]);
+	//VISTA DE CATEGORIAS
+	public function vistaCategoriaController(){
 
-			$respuesta = Datos::ingresoUsuarioModel($datosController,"usuarios");
-
-			//Validar la respuesta del modelo para ver si es  un usuario correcto
-			if($respuesta["usuario"]==$_POST["usuarioIngreso"]&& $respuesta["password"]== $_POST["passwordIngreso"]){
-				session_start();
-				$_SESSION["validar"]=true;
-				header("location:index.php?action=usuarios");
-			}else{
-				header("location:index.php?action=fallo");
-			}
-
-
-		}
-	}
-
-	//VISTA DE USUARIOS
-	public function vistaUsuariosController(){
-
-		$respuesta=Datos::vistaUsuarioModel("usuarios");
+		$respuesta=Categoria::vistaCategoriaModel("categorias");
 		//Utilizar un foreach para poder iterar un array e imprimir la consulta del modelo
 
 		foreach ($respuesta as $row => $item) {
 			echo '<tr>
-					<td>'.$item["usuario"].'</td>
-					<td>'.$item["password"].'</td>
-					<td>'.$item["email"].'</td>
-					<td><a href="index.php?action=editar&id='.$item["id"].'"<button>Editar</button></a></td>
-					<td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"<button>Borrar</button></a></td>
+					<td>'.$item["nombre"].'</td>
+					<td><a href="index.php?action=editarCategoria&id='.$item["id"].'"<button>Editar</button></a></td>
+					<td><a href="index.php?action=categorias&idBorrar='.$item["id"].'"<button>Borrar</button></a></td>
 					</tr>';
 			} 
 
 
 	}
-		#EDITAR USUARIO
-	public function editarUsuarioController(){
+		#EDITAR CATEGORIA
+	public function editarCateogoriaController(){
 		$datosController = $_GET["id"];
 		//echo $datosController;
 
-		$respuesta= Datos::editarUsuarioModel($datosController,"usuarios");
+		$respuesta= Categoria::editarCategoriaModel($datosController,"categorias");
 
 		#Diseñar la estructura de un formulario para que se muestren los datos de la consulta generada en el modelo
 
 		echo ' <input type="hidden"  value="'.$respuesta["id"].'" name="idEditar">
 
-				<input type="text" value="'.$respuesta["usuario"].'" name="usuarioEditar" required >
-
-				<input type="text" value="'.$respuesta["password"].'" name="passwordEditar" required>
-				<input type="text" value="'.$respuesta["email"].'" name="emailEditar" required>
+				<input type="text" value="'.$respuesta["nombre"].'" name="categoriaEditar" required >
 
 				<input type="submit" value="Guardar">
 
@@ -105,20 +81,19 @@ class CategoriaController{
 
 	}
 
-		#ACTUALIZAR USUARIO
-		public function actualizarUsuarioController(){
-			echo "ENTRA ACTUALIZAR";
+		#ACTUALIZAR CATEGORIA
+		public function actualizarCategoriaController(){
+			
 			if(isset($_POST["idEditar"])){
-				echo "ENTRA POST";
 
 				$datosController = array("id"=>$_POST["idEditar"],
-											"usuario"=>$_POST["usuarioEditar"],
-											"password"=>$_POST["passwordEditar"],
-											"email"=>$_POST["emailEditar"]);
-				$respuesta=Datos::actualizarUsuarioModel($datosController,"usuarios");
+											"nombre"=>$_POST["categoriaEditar"]
+										);
+				$respuesta=Categoria::actualizarCategoriaModel($datosController,"categorias");
 
 			if($respuesta=="success"){
-				header("location:index.php?action=cambio");
+				//header("location:index.php?action=cambioCategoria");
+				header("location:index.php?action=categorias");
 			}else{
 				echo("error");
 			
@@ -129,13 +104,13 @@ class CategoriaController{
 
 	}
 
-	#BORRAR USUARIO 
-	public function borrarUsuarioController(){
+	#BORRAR CATEGORIA 
+	public function borrarCategoriaController(){
 		if(isset($_GET["idBorrar"])){
 			$datosController=$_GET["idBorrar"];
-			$respuesta=Datos::borrarUsuarioModel($datosController,"usuarios");
+			$respuesta=Categoria::borrarCategoriaModel($datosController,"categorias");
 			if($respuesta == "success"){
-				header("location:index.php?action=usuarios");
+				header("location:index.php?action=categorias");
 			}
 		}
 	}
