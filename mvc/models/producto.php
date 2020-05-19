@@ -31,7 +31,7 @@ class Producto extends Conexion{
 			return "error";
 		}
 
-		//$stmt->close();
+		$stmt->close();
 
 	}
 

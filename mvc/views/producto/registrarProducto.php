@@ -1,10 +1,11 @@
 <?php
 
     $registro = new ProductoController();
+    $reg =new ProductoController();
     
     $registro -> registroProductoController();
 
-  //  $select_categoria = $registro -> obtenerSelectCategorias();
+    $select_categoria = $reg -> obtenerSelectCategorias();
 
     if(isset($_GET["action"])){
         /*if($_GET["action"] == "okProducto"){
