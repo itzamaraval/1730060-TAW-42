@@ -5,7 +5,7 @@
     
     $registro -> registroProductoController();
 
-    $select_categoria = $reg -> obtenerSelectCategorias();
+    $select_categoria -> obtenerSelectCategorias();
 
     if(isset($_GET["action"])){
         /*if($_GET["action"] == "okProducto"){
