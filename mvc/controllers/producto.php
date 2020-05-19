@@ -70,8 +70,8 @@ class ProductoController{
 					<td>'.$item["precio_compra"].'</td>
 					<td>'.$item["inventario"].'</td>
 					<td>'.$item["categoria"].'</td>
-					<td><a href="index.php?action=editarProducto&id='.$item["id"].'"<button>Editar</button></a></td>
-					<td><a href="index.php?action=productos&idBorrar='.$item["id"].'"<button>Borrar</button></a></td>
+					<td><a href="index.php?action=editarProducto&id='.$item["id"].'" class="btn btn-secondary btn-sm" >Editar</a></td>
+					<td><a href="index.php?action=productos&idBorrar='.$item["id"].'" class="btn btn-danger btn-sm">Borrar</a></td>
 					</tr>';
 		} 
 
@@ -102,18 +102,21 @@ class ProductoController{
 		
 		echo '
 			<input type="hidden"  value="'.$respuesta["id"].'" name="idEditar">
-			
-			<input type="text" placeholder="Nombre" name="nombreProductoEditar" value="'.$respuesta["nombre"].'" required>
-			<textarea name="descripcionEditar" cols="30" rows="10" placeholder="Descripción...">'.$respuesta["descripcion"].'</textarea>
-			<input type="text" type="number" placeholder="Precio venta" name="precio_ventaEditar" value="'.$respuesta["precio_venta"].'" required>
-			<input type="text" type="number" placeholder="Precio compra" name="precio_compraEditar" value="'.$respuesta["precio_compra"].'" required>
-			<input type="text" type="number" placeholder="Inventario" name="inventarioEditar" value="'.$respuesta["inventario"].'" required>
+			<label>Nombre</label>
+			<input type="text" class="form-control" placeholder="Nombre" name="nombreProductoEditar" value="'.$respuesta["nombre"].'" required>
+			<label>Descripción</label>
+			<textarea class="form-control" name="descripcionEditar" cols="30" rows="10" placeholder="Descripción...">'.$respuesta["descripcion"].'</textarea>
+			<label>Precio venta</label>
+			<input class="form-control" type="number" placeholder="Precio venta" name="precio_ventaEditar" value="'.$respuesta["precio_venta"].'" required>
+			<label>Precio compra</label>
+			<input class="form-control" type="number" placeholder="Precio compra" name="precio_compraEditar" value="'.$respuesta["precio_compra"].'" required>
+			<label>Inventario</label>
+			<input class="form-control" type="number" placeholder="Inventario" name="inventarioEditar" value="'.$respuesta["inventario"].'" required>
 			<label>Categoria</label>
-			<select name="categoria_id" id="">
+			<select class="form-control" name="categoria_id" id="">
 			'.$select_categoria.'
 			</select>
 
-			<input type="submit" value="Guardar">
 
 		';
 

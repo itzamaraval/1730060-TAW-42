@@ -54,10 +54,10 @@ class CategoriaController{
 		foreach ($respuesta as $row => $item) {
 			echo '<tr>
 					<td>'.$item["nombre"].'</td>
-					<td><a href="index.php?action=editarCategoria&id='.$item["id"].'"<button>Editar</button></a></td>
-					<td><a href="index.php?action=categorias&idBorrar='.$item["id"].'"<button>Borrar</button></a></td>
+					<td><a href="index.php?action=editarCategoria&id='.$item["id"].'" class="btn btn-secondary btn-sm">Editar</a></td>
+					<td><a href="index.php?action=categorias&idBorrar='.$item["id"].'" class="btn btn-danger btn-sm">Borrar</a></td>
 					</tr>';
-			} 
+		} 
 
 
 	}
@@ -71,10 +71,9 @@ class CategoriaController{
 		#Diseñar la estructura de un formulario para que se muestren los datos de la consulta generada en el modelo
 
 		echo ' <input type="hidden"  value="'.$respuesta["id"].'" name="idEditar">
+				<label>Nombre</label>
+				<input type="text" class="form-control" value="'.$respuesta["nombre"].'" name="categoriaEditar" required >
 
-				<input type="text" value="'.$respuesta["nombre"].'" name="categoriaEditar" required >
-
-				<input type="submit" value="Guardar">
 
 		';
 

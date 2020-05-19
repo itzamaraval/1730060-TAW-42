@@ -13,7 +13,7 @@
 				$module = "views/producto/".$enlaces.".php";
 				return $module;
 			}else if($enlaces=="okProducto"){
-				$module="views/producto/registrarProducto.php";
+				$module="views/producto/productos.php";
 				return $module;
 			}
 
