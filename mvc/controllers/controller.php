@@ -75,8 +75,8 @@
 			 		  <td>'.$item["usuario"].'</td>
 			 		  <td>'.$item["password"].'</td>
 			 		  <td>'.$item["email"].'</td>
-			 		  <td><a href="index.php?action=editar&id='.$item["id"].'" class="btn btn-secondary btn-sm">Editar</a></td>
-			 		  <td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'" class="btn btn-danger btn-sm">Borrar</a></td>
+			 		  <td><a href="index.php?action=editar&id='.$item["id"].'"<button>Editar</button></a></td>
+			 		  <td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"<button>Borrar</button></a></td>
 				 	  </tr>';
 			 } 
 
@@ -91,17 +91,14 @@
 
 			#Diseñar la estructura de un formulario para que se muestren los datos de la consulta generada en el modelo
 
-			echo '
-				<input type="hidden"  value="'.$respuesta["id"].'" name="idEditar">
-				
-				<label>Usuario</label>
-				<input type="text" class="form-control" value="'.$respuesta["usuario"].'" name="usuarioEditar" required >
+			echo ' <input type="hidden"  value="'.$respuesta["id"].'" name="idEditar">
 
-				<label>Contraseña</label>
-				<input type="text" class="form-control" value="'.$respuesta["password"].'" name="passwordEditar" required>
-				
-				<label>Correo electrónico</label>
-				<input type="text" class="form-control" value="'.$respuesta["email"].'" name="emailEditar" required>
+				   <input type="text" value="'.$respuesta["usuario"].'" name="usuarioEditar" required >
+
+				   <input type="text" value="'.$respuesta["password"].'" name="passwordEditar" required>
+				   <input type="text" value="'.$respuesta["email"].'" name="emailEditar" required>
+
+				   <input type="submit" value="Guardar">
 
 			';
 
@@ -110,10 +107,7 @@
 
 			#ACTUALIZAR USUARIO
 			public function actualizarUsuarioController(){
-				echo "ENTRA ACTUALIZAR";
 				if(isset($_POST["idEditar"])){
-					echo "ENTRA POST";
-
 					$datosController = array("id"=>$_POST["idEditar"],
 										      "usuario"=>$_POST["usuarioEditar"],
 										      "password"=>$_POST["passwordEditar"],
