@@ -1,6 +1,9 @@
 <?php
-    session_start();
-    session_destroy();
+
+
+	session_start();
+	session_destroy();
+
 ?>
 
-<h1> Has salido de la aplicación. </h1>
+<h1>¡HAZ SALIDO DE LA APLICACIÓN!</h1>
