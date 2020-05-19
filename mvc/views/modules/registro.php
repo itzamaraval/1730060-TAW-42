@@ -1,25 +1,3 @@
-<?php 
-    $registro = new MvcController();
-    
-    $registro -> registroUsuarioController();
-
-    if(isset($_GET["action"])){
-        if($_GET["action"] == "ok"){
-            echo '
-                <div class="alert alert-success">
-                  <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                  </button>
-                  <span>USUARIO REGISTRADO CON ÉXITO.</span>
-                </div>
-            ';
-        }
-
-        if($_GET["action"] == "fallo"){
-            echo "Fallo al ingresar";
-        }
-    }
-?>
 <h1>Registrar</h1>
 
 <form method="post">
@@ -49,3 +27,26 @@
 </div>
 
 </form>
+
+<?php 
+    $registro = new MvcController();
+    
+    $registro -> registroUsuarioController();
+
+    if(isset($_GET["action"])){
+        if($_GET["action"] == "ok"){
+            echo '
+                <div class="alert alert-success">
+                  <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="tim-icons icon-simple-remove"></i>
+                  </button>
+                  <span>USUARIO REGISTRADO CON ÉXITO.</span>
+                </div>
+            ';
+        }
+
+        if($_GET["action"] == "fallo"){
+            echo "Fallo al ingresar";
+        }
+    }
+?>
