@@ -4,8 +4,8 @@ class Database
     //Datos para la conexión a la BD
     private static $dbName = 'ejercicio-mvc' ;
     private static $dbHost = 'localhost' ;
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = 'root';
+    private static $dbUsername = 'admin';
+    private static $dbUserPassword = 'a58f7bd26723b03e63663e9781d6e66088070d4b881fb6a1';
      
     private static $cont  = null;
      
