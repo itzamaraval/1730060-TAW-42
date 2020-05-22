@@ -40,6 +40,8 @@
             $data['promedio']=$_REQUEST['txt_promedio'];
             $data['edad']=$_REQUEST['txt_edad'];
             $data['fecha']=$_REQUEST['txt_fecha'];
+            $data['universidad_id']=$_REQUEST['txt_universidad'];
+            $data['facultad_id']=$_REQUEST['txt_facultad'];
 
             if ($_REQUEST['id']=="") {
                 $this->model_e->create($data);

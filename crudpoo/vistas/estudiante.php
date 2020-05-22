@@ -68,6 +68,22 @@
                     </div>
                     
                 </div>
+                <!-- Campo universidad -->
+                <div class="form-group">
+                    <select class=" col-sm-2 control-label" for="txt_universidad">UNIVERSIDAD:</select>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="txt_universidad" value="<?php echo $data['universidad_id']; ?>">
+                    </div>
+                    
+                </div>
+                <!-- Campo facultad -->
+                <div class="form-group">
+                    <select class=" col-sm-2 control-label" for="txt_facultad">FACULTAD:</select>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="txt_facultad" value="<?php echo $data['facultad_id']; ?>">
+                    </div>
+                    
+                </div>
             <!-- Botones para actualizar y registrar -->
                 <div class="form-group">
                     <div class="col-md-12 col-md-off-set-3">
