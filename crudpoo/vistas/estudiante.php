@@ -70,17 +70,17 @@
                 </div>
                 <!-- Campo universidad -->
                 <div class="form-group">
-                    <select class=" col-sm-2 control-label" for="txt_universidad">UNIVERSIDAD:</select>
+                    <label class=" col-sm-2 control-label" for="txt_universidad">UNIVERSIDAD:</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" name="txt_universidad" value="<?php echo $data['universidad_id']; ?>">
+                        <input type="select" class="form-control" name="txt_universidad" value="<?php echo $data['universidad_id']; ?>">
                     </div>
                     
                 </div>
                 <!-- Campo facultad -->
                 <div class="form-group">
-                    <select class=" col-sm-2 control-label" for="txt_facultad">FACULTAD:</select>
+                    <label class=" col-sm-2 control-label" for="txt_facultad">FACULTAD:</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" name="txt_facultad" value="<?php echo $data['facultad_id']; ?>">
+                        <input type="select" class="form-control" name="txt_facultad" value="<?php echo $data['facultad_id']; ?>">
                     </div>
                     
                 </div>
