@@ -9,7 +9,7 @@
             $this->DB=Database::connect();
         }
         //función para obtener todos los registros de la tabla universidades de manera ascendente
-        function getUniversidades(){
+        function get(){
             $sql= 'SELECT * FROM universidades ORDER BY id ASC';
             $fila=$this->DB->query($sql);
             $this->universidades=$fila;
