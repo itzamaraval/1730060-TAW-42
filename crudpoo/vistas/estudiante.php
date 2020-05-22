@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label class=" col-sm-2 control-label" for="txt_universidad">UNIVERSIDAD:</label>
                     <div class="col-sm-10">
-                        <input type="select" class="form-control" name="txt_universidad" value="<?php echo $data['universidad_id']; ?>">
+                        <input type="text" class="form-control" name="txt_universidad" value="<?php echo $data['universidad_id']; ?>">
                     </div>
                     
                 </div>
@@ -80,7 +80,7 @@
                 <div class="form-group">
                     <label class=" col-sm-2 control-label" for="txt_facultad">FACULTAD:</label>
                     <div class="col-sm-10">
-                        <input type="select" class="form-control" name="txt_facultad" value="<?php echo $data['facultad_id']; ?>">
+                        <input type="tetx" class="form-control" name="txt_facultad" value="<?php echo $data['facultad_id']; ?>">
                     </div>
                     
                 </div>
