@@ -15,6 +15,8 @@
                     <th>Promedio</th>
                     <th>Edad</th>
                     <th>Fecha</th>
+                    <th>Universidad</th>
+                    <th>Facultad</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -29,6 +31,8 @@
                         <th><?php echo $data['promedio']; ?></th>
                         <th><?php echo $data['edad']; ?></th>
                         <th><?php echo $data['fecha']; ?></th>
+                        <th><?php echo $data['universidad_id']; ?></th>
+                        <th><?php echo $data['facultad_id']; ?></th>
                         <th>
                             <!-- Botones para editar y eliminar  -->
                             <a href="index.php?m=estudiante&id=<?php echo $data['id']?>" class="btn btn-primary">Editar</a>
