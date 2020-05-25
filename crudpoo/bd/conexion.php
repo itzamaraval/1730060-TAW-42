@@ -12,7 +12,7 @@ class Database
     public function __construct() {
         die('Init function is not allowed');
     }
-     //función para conectar a la BD
+     
     public static function connect()
     {
        if ( null == self::$cont )
@@ -28,7 +28,7 @@ class Database
        }
        return self::$cont;
     }
-     //función para desconectarse de la BD
+    
     public static function disconnect()
     {
         self::$cont = null;

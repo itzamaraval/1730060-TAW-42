@@ -1,6 +1,6 @@
 <?php 
     require_once('modelo/universidad_model.php');
-    //controller universidades
+    //controller universidads
     class universidad_controller{
 
         private $model_e;
@@ -9,12 +9,12 @@
         function __construct(){
             $this->model_e=new universidad_model();
         }
-        //navegación de las acciones
+       
         function index(){
             $query =$this->model_e->get();
 
             include_once('vistas/header.php');
-            include_once('vistas/index.php');
+            include_once('vistas/universidad/index.php');
             include_once('vistas/footer.php');
         }
 
@@ -26,15 +26,20 @@
             }
             $query=$this->model_e->get();
             include_once('vistas/header.php');
-            include_once('vistas/universidad.php');
+            include_once('vistas/universidad/universidad.php');
             include_once('vistas/footer.php');
         }
 
-        function get_datosE(){
-            //obtención de los tatos de los campos de texto para la inserción de ellos en la tabla
+        /**
+         * FUNCIÓN PARA RECIBIR LOS DATOS DESDE EL FORMULARIO
+         */
+        function get_datos(){
+           
             
             $data['id']=$_REQUEST['txt_id'];
             $data['nombre']=$_REQUEST['txt_nombre'];
+            $data['direccion']=$_REQUEST['txt_direccion'];
+            $data['telefono']=$_REQUEST['txt_telefono'];
 
             if ($_REQUEST['id']=="") {
                 $this->model_e->create($data);
@@ -45,11 +50,13 @@
                 $this->model_e->update($data,$date);
             }
             
-            header("Location:index.php");
+            header("Location:index.php?universidad=index");
 
         }
-        //función para confirmar la eliminación de un estudiante
+        
         function confirmarDelete(){
+
+            $_REQUEST['modulo'] = "universidad";
 
             $data=NULL;
 
@@ -60,7 +67,7 @@
             if ($_REQUEST['id']==0) {
                 $date['id']=$_REQUEST['txt_id'];
                 $this->model_e->delete($date['id']);
-                header("Location:index.php");
+                header("Location:index.php?universidad=index");
             }
 
             include_once('vistas/header.php');

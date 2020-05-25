@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-05-2020 a las 13:44:01
+-- Tiempo de generación: 25-05-2020 a las 17:59:21
 -- Versión del servidor: 5.7.30-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.24-0ubuntu0.18.04.4
 
@@ -25,65 +25,88 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estudiantes`
+-- Estructura de tabla para la tabla `carrera`
 --
 
-CREATE TABLE `estudiantes` (
+CREATE TABLE `carrera` (
   `id` int(11) NOT NULL,
-  `cedula` varchar(255) DEFAULT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `apellidos` varchar(255) DEFAULT NULL,
-  `promedio` decimal(10,0) DEFAULT NULL,
-  `edad` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
+  `nombre` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contenidos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `universidad_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estudiante`
+--
+
+CREATE TABLE `estudiante` (
+  `id` int(11) NOT NULL,
+  `cedula` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `promedio` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `edad` int(11) NOT NULL,
   `universidad_id` int(11) NOT NULL,
-  `facultad_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `carrera_id` int(11) NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facultades`
+-- Estructura de tabla para la tabla `universidad`
 --
 
-CREATE TABLE `facultades` (
+CREATE TABLE `universidad` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nombre` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `direccion` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefono` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `universidades`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `universidades` (
+CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `estudiantes`
+-- Indices de la tabla `carrera`
 --
-ALTER TABLE `estudiantes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `universidad_id` (`universidad_id`),
-  ADD KEY `facultad_id` (`facultad_id`);
-
---
--- Indices de la tabla `facultades`
---
-ALTER TABLE `facultades`
+ALTER TABLE `carrera`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `universidades`
+-- Indices de la tabla `estudiante`
 --
-ALTER TABLE `universidades`
+ALTER TABLE `estudiante`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `universidad`
+--
+ALTER TABLE `universidad`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -91,33 +114,28 @@ ALTER TABLE `universidades`
 --
 
 --
--- AUTO_INCREMENT de la tabla `estudiantes`
+-- AUTO_INCREMENT de la tabla `carrera`
 --
-ALTER TABLE `estudiantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `carrera`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `facultades`
+-- AUTO_INCREMENT de la tabla `estudiante`
 --
-ALTER TABLE `facultades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `estudiante`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `universidades`
+-- AUTO_INCREMENT de la tabla `universidad`
 --
-ALTER TABLE `universidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `universidad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Restricciones para tablas volcadas
+-- AUTO_INCREMENT de la tabla `usuario`
 --
-
---
--- Filtros para la tabla `estudiantes`
---
-ALTER TABLE `estudiantes`
-  ADD CONSTRAINT `estudiantes_ibfk_1` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`),
-  ADD CONSTRAINT `estudiantes_ibfk_2` FOREIGN KEY (`facultad_id`) REFERENCES `facultades` (`id`);
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

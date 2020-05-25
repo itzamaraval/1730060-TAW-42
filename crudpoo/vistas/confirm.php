@@ -1,6 +1,6 @@
 <section class="container">
     <div class="row">
-    <form method="post" action="index.php?m=confirmarDelete&id=<?php echo "0";?>">
+    <form method="post" action="index.php?<?php echo $_REQUEST['modulo']; ?>=confirmarDelete&id=<?php echo "0";?>">
         <div class="col-md-6 col-md-offset-3">
             <label>¿Deseas eliminar este registro?</label>
             <input type="hidden" name="txt_id" value="<?php echo $data['id']; ?>">
