@@ -29,7 +29,6 @@
                     <th>Promedio</th>
                     <th>Universidad</th>
                     <th>Carrera</th>
-                    <th>Fecha de registro</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -43,7 +42,6 @@
                         <th><?php echo $data['promedio']; ?></th>
                         <th><?php echo $data['universidad']; ?></th>
                         <th><?php echo $data['carrera']; ?></th>
-                        <th><?php echo $data['fecha_reg']; ?></th>
                         <th>
                             <!-- Botones para editar y eliminar  -->
                             <a href="index.php?m=estudiante&id=<?php echo $data['id']?>&universidad_id=<?php echo $data['universidad_id']?>" class="btn btn-primary">Editar</a>
