@@ -33,10 +33,10 @@
         function create($data){
 
             $this->DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql="INSERT INTO estudiante(cedula,nombre,apellidos,promedio,edad,universidad_id,carrera_id,fecha_reg)VALUES (?,?,?,?,?,?,?,?)";
+            $sql="INSERT INTO estudiante(cedula,nombre,apellidos,promedio,edad,universidad_id,carrera_id)VALUES (?,?,?,?,?,?,?)";
 
             $query = $this->DB->prepare($sql);
-            $query->execute(array($data['cedula'],$data['nombre'],$data['apellidos'],$data['promedio'],$data['edad'],$data['universidad_id'],$data['carrera_id'],$data['fecha_reg']));
+            $query->execute(array($data['cedula'],$data['nombre'],$data['apellidos'],$data['promedio'],$data['edad'],$data['universidad_id'],$data['carrera_id']));
             
             Database::disconnect();
         }
@@ -52,7 +52,7 @@
         
         function update($data,$date){
             $this->DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE estudiante  set  cedula=?, nombre =?, apellidos=?,promedio=?, edad=?, carrera_id=?, fecha_reg=? WHERE id = ? ";
+            $sql = "UPDATE estudiante  set  cedula=?, nombre =?, apellidos=?,promedio=?, edad=?, carrera_id=? WHERE id = ? ";
             $q = $this->DB->prepare($sql);
             $q->execute(array($data['cedula'],$data['nombre'],$data['apellidos'],$data['promedio'],$data['edad'],$data['carrera_id'], $date));
             Database::disconnect();
