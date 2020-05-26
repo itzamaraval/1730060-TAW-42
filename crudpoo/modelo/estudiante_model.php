@@ -10,7 +10,7 @@
         }
         
         function get(){
-            $sql= "SELECT e.id,CONCAT(e.apellidos,' ',e.nombre) AS alumno,u.nombre AS universidad, c.nombre AS carrera, e.universidad_id FROM estudiante AS e
+            $sql= "SELECT e.id,e.cedula AS cedula,CONCAT(e.nombre,' ',e.apellidos) AS alumno,e.edad AS edad, e.promedio AS promedio,u.nombre AS universidad, c.nombre AS carrera, e.universidad_id FROM estudiante AS e
             INNER JOIN universidad AS u ON u.id = e.universidad_id
             INNER JOIN carrera AS c ON c.id = e.carrera_id
             ORDER BY e.apellidos ASC";
