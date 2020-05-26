@@ -89,8 +89,6 @@
                     </div>
                     
                 </div>
-
-               
                 
                 <!-- Botones para actualizar y registrar -->
                 <div class="form-group">

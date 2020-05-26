@@ -60,14 +60,7 @@
                     </div>
                     
                 </div>
-                <!-- Campo fecha con calendario expandible -->
-                <div class="form-group">
-                    <label class=" col-sm-2 control-label" for="txt_fecha">FECHA:</label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control" name="txt_fecha" value="<?php echo $data['fecha']; ?>">
-                    </div>
-                    
-                </div>
+              
                 <!-- Campo universidad -->
                 <div class="form-group">
                     <label class=" col-sm-2 control-label" for="txt_universidad">UNIVERSIDAD:</label>
