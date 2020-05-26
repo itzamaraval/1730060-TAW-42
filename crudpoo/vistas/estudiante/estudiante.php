@@ -96,6 +96,7 @@
                     <div class="col-sm-10">
                         <input type="date" class="form-control" name="txt_fecha" value="<?php echo $data['fecha_reg']; ?>">
                     </div>
+                </div>
                 
                 <!-- Botones para actualizar y registrar -->
                 <div class="form-group">
