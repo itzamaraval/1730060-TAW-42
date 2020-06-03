@@ -153,12 +153,7 @@ class MvcController{
 				';
 			}
 		}
-
-		public function editarUserController(){
-			$datosController = $_GET["idUserEditar"];
-
-			$respuesta = Datos::editarUserModel
-		}
+	}
 		public function editarUserController() { 
 			$datosController = $_GET["idUserEditar"]; 
 			//envío de datos al mododelo 
@@ -277,7 +272,7 @@ class MvcController{
 			}
 		}
 
-	}
+	
 }
 
 ?>

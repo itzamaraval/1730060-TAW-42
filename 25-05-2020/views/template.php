@@ -58,9 +58,9 @@
 						<!-- Aquí va el contenido de la página -->
 
 						<?php 
-							}
-							$mvc = new MvcContrller();
-							$mvc->enalcesPaginaController();
+							
+							$mvc = new MvcController();
+							$mvc->enlacesPaginasController();
 						?>
 					</div>
 				</div>
