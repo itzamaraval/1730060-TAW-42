@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PRACTICA 3</title>
+  <title>Inventarios 2020</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -52,7 +52,7 @@
     <a href="index.php" class="brand-link">
       <img src="assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">PRÁCTICA 3</span>
+      <span class="brand-text font-weight-light">Inventarios 2020</span>
     </a>
 
     <!-- Sidebar -->
@@ -62,7 +62,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-header">MENU</li>
+          <li class="nav-header">MENÚ</li>
           <li class="nav-item">
             <a href="index.php" class="nav-link">
                 <i class="nav-icon fa fa-signal"></i>

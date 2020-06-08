@@ -6,4 +6,4 @@
 
 ?>
 
-<h1>¡HAZ SALIDO DE LA APLICACIÓN!</h1>
+<h1>¡Haz salido de la aplicación!</h1>
