@@ -5,7 +5,7 @@ class Database
     private static $dbName = 'ejercicio-mvc' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'admin';
-    private static $dbUserPassword = 'a58f7bd26723b03e63663e9781d6e66088070d4b881fb6a1';
+    private static $dbUserPassword = 'd47eea063ea0eec953ce23ad25117d0422aa6a523e8e1595';
      
     private static $cont  = null;
      
