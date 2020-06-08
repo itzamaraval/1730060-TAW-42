@@ -1,40 +1,68 @@
-<?php  
-//modelo de enlaces web
-class Paginas{
-	public static function enlacesPaginasModel($enlaces){
-			if($enlaces == "ingresar" || $enlaces == "usuarios" || $enlaces == "registros" || $enlaces == "producto" || $enlaces == "registrarProducto" || $enlaces == "editar" || $enlaces == "editarProducto" || $enlaces == "categorias"  || $enlaces == "registrarCategoria" || $enlaces == "editarCategoria"){
-				$modules = "views/modules/".$enlaces.".php";
+<?php
+	
+	#Modelo de enlaces web
+	class Paginas{
+		public function enlacesPaginasModel($enlaces){
+			
+			//COMPROBAR ENLACE PARA MOSTRAR LA VISTA DEL TABLERO
+			if($enlaces=="index"){
+				$module = "views/modules/tablero.php";
+				return $module;
 			}
-			else if($enlaces == "index"){
-				$modules = "views/modules/registro.php";
+
+			// ENLACES PARA EL MODULO PRODUCTOS
+			if(
+				$enlaces=="productos"||
+				$enlaces=="registrarProducto"||
+				$enlaces=="editarProducto"
+			){
+				$module = "views/producto/".$enlaces.".php";
+				return $module;
+			}else if($enlaces=="okProducto"){
+				$module="views/producto/productos.php";
+				return $module;
 			}
-			else if($enlaces == "ok"){
-				$modules = "views/modules/registro.php";
+
+			// ENLACES PARA EL MODULO CATEGORIA
+			if(
+				$enlaces=="categorias"||
+				$enlaces=="registrarCategoria"||
+				$enlaces=="editarCategoria"
+			){
+				$module = "views/categoria/".$enlaces.".php";
+				return $module;
+			}else if($enlaces=="okCategoria"){
+				$module="views/categoria/registrarCategoria.php";
+				return $module;
 			}
-			else if($enlaces == "okproduct"){
-				$modules = "views/modules/producto.php";
-			}
-			else if($enlaces == "okcategoria"){
-				$modules = "views/modules/categorias.php";
-			}
-			else if($enlaces == "fallo"){
-				$modules = "views/modules/ingresar.php";
-			}
-			else if($enlaces == "cambio"){
-				$modules = "views/modules/usuarios.php";
-			}
-			else if($enlaces == "cambioproduct"){
-				$modules = "views/modules/producto.php";
-			}
-			else if($enlaces == "cambiocategoria"){
-				$modules = "views/modules/categorias.php";
-			}
-			else if($enlaces == "salir"){
-				$modules = "views/modules/salir.php";
-			}else{
-				$modules = "views/modules/registro.php";
-			}
-			return $modules;
+
+			if ($enlaces =="ingresar"||($enlaces)=="usuarios" || ($enlaces)=="editar"||($enlaces)=="salir"){
+
+					$module = "views/modules/".$enlaces.".php";
+				}
+				 else if($enlaces=="registro"){
+					$module="views/modules/registro.php";
+
+				} else if($enlaces=="ok"){
+
+					$module="views/modules/registro.php";
+				} else if($enlaces=="fallo"){
+
+					$module="views/modules/ingresar.php";
+				} else if($enlaces=="cambio"){
+
+					$module="views/modules/usuarios.php";
+				} else{
+
+					$module="views/modules/registro.php";
+				}	
+
+				return $module;	
+		
 		}
-}
+
+	}
+
+
+
 ?>

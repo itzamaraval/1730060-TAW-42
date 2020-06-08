@@ -1,196 +1,107 @@
 <?php
-class Producto
-{
 
-  // Atributos de la clase
-  private $id;
-  private $codigo;
-  private $nombre;
-  private $descripcion;
-  private $cantidad;
-  private $precio_compra;
-  private $precio_venta;
-  private $id_categoria;
+require_once "conexion.php";
 
-  // Constructor
-  function __construct($id, $codigo, $nombre, $descripcion, $cantidad, $precio_compra, $precio_venta, $id_categoria)
-  {
-    $this->setId($id);
-    $this->setCodigo($codigo);
-    $this->setNombre($nombre);
-    $this->setDescripcion($descripcion);
-    $this->setCantidad($cantidad);
-    $this->setPrecioCompra($precio_compra);
-    $this->setPrecioVenta($precio_venta);
-    $this->setIdCategoria($id_categoria);
-  }
+//heredar la clase conexion.php para poder accesar y utilizar la conexión de base de datos, se extiende cuando se requiere manipular una función o método, en este caso manipularemos la función "conectar" de models/conexion.php
+class Producto extends Conexion{
 
-  // Métodos accesores
-  public function getId()
-  {
-    return $this->id;
-  }
+	//REGISTRO DE CATEGORIAS
 
-  public function getNombre()
-  {
-    return $this->nombre;
-  }
+	public function registroProductoModel($datosModel, $tabla){
 
-  public function getCodigo()
-  {
-    return $this->codigo;
-  }
+		#prepare() prepara la sentencia de sql para que sea ejecutada por el método POSStatmen. La sentencia de SQL se puede contener desde cero para ejecutar mas parámetros.
 
-  public function getDescripcion()
-  {
-    return $this->descripcion;
-  }
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,descripcion,precio_venta,precio_compra,inventario,categoria_id) VALUES (:nombre,:descripcion,:precio_venta,:precio_compra,:inventario,:categoria_id)");
 
-  public function getCantidad()
-  {
-    return $this->cantidad;
-  }
 
-  public function getPrecioCompra()
-  {
-    return $this->precio_compra;
-  }
+		//bindParam vincula una variable de PHP a un parametro de sustitución con nombre correspondiente a la sentencia sql
 
-  public function getPrecioVenta()
-  {
-    return $this->precio_venta;
-  }
+		$stmt->bindParam(":nombre",$datosModel["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":descripcion",$datosModel["descripcion"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio_venta",$datosModel["precio_venta"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio_compra",$datosModel["precio_compra"], PDO::PARAM_STR);
+		$stmt->bindParam(":inventario",$datosModel["inventario"], PDO::PARAM_STR);
+		$stmt->bindParam(":categoria_id",$datosModel["categoria_id"], PDO::PARAM_STR);
 
-  public function getIdCategoria()
-  {
-    return $this->id_categoria;
-  }
+		#Regresar una respuesta satisfactoria o no
 
-  // Métodos modificadores
-  public function setId($id)
-  {
-    $this->id = $id;
-  }
+		if($stmt->execute()){
+			return "success";	
+		}else{
+			return "error";
+		}
 
-  public function setCodigo($codigo)
-  {
-    $this->codigo = $codigo;
-  }
+		$stmt->close();
 
-  public function setNombre($nombre)
-  {
-    $this->nombre = $nombre;
-  }
+	}
 
-  public function setDescripcion($descripcion)
-  {
-    $this->descripcion = $descripcion;
-  }
 
-  public function setCantidad($cantidad)
-  {
-    $this->cantidad = $cantidad;
-  }
+	#MODELO VISTA CATEGORIA
+	public function vistaProductoModel($tabla){
+		$stmt=Conexion::conectar()->prepare("SELECT p.id,p.nombre,p.precio_venta,p.precio_compra,p.inventario,c.nombre AS categoria FROM $tabla AS p INNER JOIN categorias AS c ON c.id=p.categoria_id");
+		$stmt->execute();
 
-  public function setPrecioCompra($precio_compra)
-  {
-    $this->precio_compra = $precio_compra;
-  }
+		#fetchAll(): Obtiene todas las filas de un conjunto de resultados asociados al objeto PDO statment ($stmt)
+		
+		$productos = $stmt->fetchAll();
+		
+		return $productos;
 
-  public function setPrecioVenta($precio_venta)
-  {
-    $this->precio_venta = $precio_venta;
-  }
+		$stmt->close();
+	}
 
-  public function setIdCategoria($id_categoria)
-  {
-    $this->id_categoria = $id_categoria;
-  }
+	#MODELO EDITAR CATEGORIA
+	public function editarProductoModel($datosModel,$tabla){
+		$stmt=Conexion::conectar()->prepare("SELECT id,nombre,descripcion,precio_venta,precio_compra,inventario,categoria_id FROM $tabla WHERE id=:id");
+		$stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+		$stmt->execute();
+		
+		//echo $datosModel;
+		
+		$producto = $stmt->fetch();
+		
+		return $producto;
+		$stmt->close();
+	}
 
-  // Operaciones CRUD
-  public static function registrar($producto)
-  {
-    $db = Db::getConnect();
 
-    $insert = $db->prepare('INSERT INTO Productos (codigo,nombre,descripcion,cantidad,precio_compra,precio_venta,id_categoria) VALUES (:codigo,:nombre,:descripcion,:cantidad,:precio_compra,:precio_venta,:id_categoria)');
+	#MODELO ACTUALIZAR CATEGORIA
+	public function actualizarProductoModel($datosModel,$tabla){
+		$stmt=Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre,descripcion=:descripcion,precio_venta=:precio_venta,precio_compra=:precio_compra,inventario=:inventario,categoria_id=:categoria_id WHERE id=:id");
+		$stmt->bindParam(":nombre",$datosModel["nombre"],PDO::PARAM_STR);
+		$stmt->bindParam(":descripcion",$datosModel["descripcion"],PDO::PARAM_STR);
+		$stmt->bindParam(":precio_venta",$datosModel["precio_venta"],PDO::PARAM_STR);
+		$stmt->bindParam(":precio_compra",$datosModel["precio_compra"],PDO::PARAM_STR);
+		$stmt->bindParam(":inventario",$datosModel["inventario"],PDO::PARAM_STR);
+		$stmt->bindParam(":categoria_id",$datosModel["categoria_id"],PDO::PARAM_STR);
 
-    $insert->bindValue('codigo', $producto->getCodigo());
-    $insert->bindValue('nombre', $producto->getNombre());
-    $insert->bindValue('descripcion', $producto->getDescripcion());
-    $insert->bindValue('cantidad', $producto->getCantidad());
-    $insert->bindValue('precio_compra', $producto->getPrecioCompra());
-    $insert->bindValue('precio_venta', $producto->getPrecioVenta());
-    $insert->bindValue('id_categoria', $producto->getIdCategoria());
+		$stmt->bindParam(":id",$datosModel["id"],PDO::PARAM_STR);
 
-    $insert->execute();
-  }
+		if($stmt->execute()){
+			return "success";
+		}else{
+			return "error";
+		}
+			$stmt->close();
 
-  public static function obtenerCategorias(){
-    $db=Db::getConnect();
+	}
 
-    $select=$db->query('SELECT id, nombre FROM CategoriasProducto');
+	#MODELO BORRAR CATEGORIA
+	public function borrarProductoModel($datosModel,$tabla){
+		$stmt=Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id=:id");
+		$stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
 
-    $filas = $select->fetchAll(\PDO::FETCH_ASSOC); 
+		if($stmt->execute()){
+			return "sucess";
+		}else{
+			return "error";
+		}
 
-    return $filas;
+		$stmt->close();
+	}
+
+	
+
+
 }
-
-  // Método que recupera los todos registros de la tabla
-  public static function obtenerProductos()
-  {
-    $db = Db::getConnect();
-    $productos = [];
-
-    $select = $db->query('SELECT id, codigo,nombre, descripcion, cantidad,precio_compra, precio_venta, id_categoria FROM Productos');
-
-    foreach ($select->fetchAll() as $producto) {
-      $productos[] = new Producto($producto['id'], $producto['codigo'], $producto['nombre'], $producto['descripcion'], $producto['cantidad'], $producto['precio_compra'], $producto['precio_venta'], $producto['id_categoria']);
-    }
-
-    return $productos;
-  }
-
-  // Método que recupera únicamente un registro de la tabla
-  public static function obtenerProducto($id)
-  {
-    $db = Db::getConnect();
-    $select = $db->prepare('SELECT id,codigo, nombre, descripcion,cantidad, precio_compra, precio_venta, id_categoria FROM Productos WHERE id=:id');
-
-    $select->bindValue('id', $id);
-    $select->execute();
-
-    $productoDb = $select->fetch();
-
-    $producto = new Producto($productoDb['id'], $productoDb['codigo'], $productoDb['nombre'], $productoDb['descripcion'], $productoDb['canttidad'], $productoDb['precio_compra'], $productoDb['precio_venta'], $productoDb['id_categoria']);
-    return $producto;
-  }
-
-  // Método que actualiza la información de un producto
-  public static function actualizar($producto)
-  {
-    $db = Db::getConnect();
-    $update = $db->prepare('UPDATE Productos SET codigo=:codigo, nombre=:nombre, descripcion=:descripcion,cantidad=:cantidad, precio_compra=:precio_compra, precio_venta=:precio_venta,id_categoria=:id_categoria WHERE id=:id');
-
-    $update->bindValue('codigo', $producto->getCodigo());
-    $update->bindValue('nombre', $producto->getNombre());
-    $update->bindValue('descripcion', $producto->getDescripcion());
-    $update->bindValue('cantidad', $producto->getCantidad());
-    $update->bindValue('precio_compra', $producto->getPrecioCompra());
-    $update->bindValue('precio_venta', $producto->getPrecioVenta());
-    $update->bindValue('id_categoria', $producto->getIdCategoria());
-
-    $update->bindValue('id', $producto->getId());
-
-    $update->execute();
-  }
-
-  // Método que elimina el registro de una categoría de producto
-  public static function eliminar($id)
-  {
-    $db = Db::getConnect();
-
-    $delete = $db->prepare('DELETE FROM Productos WHERE id=:id');
-    $delete->bindValue('id', $id);
-    $delete->execute();
-  }
-}
+?>
