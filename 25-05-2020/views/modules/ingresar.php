@@ -10,7 +10,6 @@
 
 ?>
 
-					</div>
 <h1>INGRESAR</h1>
 
 <form method="post">
