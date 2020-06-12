@@ -25,7 +25,7 @@
 		<p>Productos registrados</p>
 		</div>
 		<div class="icon">
-		<i class="far fa-address-card"></i>
+		<i class="fas fa-boxes"></i>
 		</div>
 		<a href="index.php?action=productos" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
 	</div>
@@ -40,7 +40,7 @@
 		<p>Categorías registradas</p>
 		</div>
 		<div class="icon">
-		<i class="far fa-address-card"></i>
+		<i class="fas fa-tags"></i>
 		</div>
 		<a href="index.php?action=categorias" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
 	</div>
