@@ -10,7 +10,7 @@
 
 ?>
 
-<h1>INGRESAR</h1>
+<a href="index.php"><b>Sistema de </b>inventarios</a>
 
 <form method="post">
 <div class="row">
