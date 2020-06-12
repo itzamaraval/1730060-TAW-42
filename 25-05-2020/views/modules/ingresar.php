@@ -11,11 +11,10 @@
 ?>
 
 <div class="login-logo">
-		<a href="index.php"><b>Sistema de </b>inventarios</a>
-	</div>
+	<a href="index.php"><b>Sistema de </b>inventarios</a>
 
-<form method="post">
-<div class="row">
+	<form method="post">
+	<div class="row">
     <div class="col-md-6">
         <div class="card">
             
@@ -48,3 +47,5 @@
 </div>
 
 </form>
+</div>
+
