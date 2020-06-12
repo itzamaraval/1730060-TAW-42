@@ -10,39 +10,26 @@
 
 ?>
 
-<div class="login-box">
-	<div class="login-logo">
-		<a href="index.php"><b>Sistema de </b>inventarios</a>
-	</div>
-	<!-- /.login.php -->
-	<div class="card">
-		<div class="card-body login-card-body">
-			<p class="login-box-msg">Login</p>
-			<form method="POST">
-				<div class="input-group nb-3">
-					<input type="text" name="usuarioIngreso" id="txtUser" class="form-control" placeholder="Username" required>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<span class="fas fa-user"></span>
-						</div>
 					</div>
-				</div>
-				<div class="input-group nb-3">
-					<input type="password" name="passwordIngreso" id="txtPassword" class="form-control" placeholder="Password" required>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<span class="fas fa-user"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<button class="btn btn-primary btn-block btn-flat">Iniciar Sesión</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+<h1>INGRESAR</h1>
+
+<form method="post">
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            
+            <div class="card-body center">
+				<br>
+				<input type="text" class="form-control" placeholder="Usuario" name="usuarioIngreso" required >		     
+				<br>
+				<input type="password" class="form-control" placeholder="password" name="passwordIngreso" required >	
+            </div>
+            
+            <div class="card-footer">
+                <button type="submit" class="btn btn-fill btn-primary">Iniciar sesión</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-
+</form>
