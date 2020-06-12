@@ -10,7 +10,9 @@
 
 ?>
 
-<a href="index.php"><b>Sistema de </b>inventarios</a>
+<div class="login-logo">
+		<a href="index.php"><b>Sistema de </b>inventarios</a>
+	</div>
 
 <form method="post">
 <div class="row">
@@ -20,15 +22,16 @@
             <div class="card-body center">
 				<br>
 				<div class="input-group nb-3">
-					<input type="text" name="txtUser" id="txtUser" class="form-control" placeholder="Username" required>
+					<input type="text" name="txtUser" id="usuarioIngreso" class="form-control" placeholder="Username" required>
 					<div class="input-group-append">
 						<div class="input-group-text">
 							<span class="fas fa-user"></span>
 						</div>
 					</div>
 				</div>
+				<br>
 				<div class="input-group nb-3">
-					<input type="password" name="txtPassword" id="txtPassword" class="form-control" placeholder="Password" required>
+					<input type="password" name="passwordIngreso" id="txtPassword" class="form-control" placeholder="Password" required>
 					<div class="input-group-append">
 						<div class="input-group-text">
 							<span class="fas fa-user"></span>
