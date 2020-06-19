@@ -35,7 +35,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
     &nbsp;
-    </ul>
+    </ul> 
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -106,6 +106,14 @@
                 <i class="nav-icon fas fa-tags"></i>
                 <p>
                 Categorias
+                </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.php?action=ventas" class="nav-link">
+                <i class="nav-icon fa fa-shopping-cart"></i>
+                <p>
+                Ventas
                 </p>
             </a>
           </li>
