@@ -17,24 +17,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route:get
+//metodos para obtencion, guardado y eliminación de datos
+//get, post (guardar), put, delete
+
 Route::get('/productos', function () {
-    return 'productos';
+    return ('productos');
 });
 
 Route::post('/productos', function () {
-    return 'productos (post)';
+    return ('Almacenando productos (post)');
 });
 
-Route::put('/productos{id}', function($id){
+Route::put('/productos/{id}', function($id){
 	return ('actualizando producto: ' . $id);
 });
 
+//parámetros
 Route::get('saludo/{nombre}/{apodo?}', function($nombre, $apodo=null){
 	//Poner la primera letra en mayuscula
-	$nombre = ucfirst($nombre);
+    $nombre = ucfirst($nombre);
+    //validar si tiene apodo
 	if ($apodo) {
 		return "Bienvenido {$nombre}, tu apodo es {$apodo}";
 	} else {
 		return "Buenvenido {$nombre}";
 	}
 });
+
