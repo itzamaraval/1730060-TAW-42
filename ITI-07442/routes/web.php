@@ -2,6 +2,28 @@
 
 use Illuminate\Support\Facades\Route;
 
+//Vista para el controlador de empleados
+Route::resource('empleados','empleadosController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
@@ -45,3 +67,4 @@ Route::get('saludo/{nombre}/{apodo?}', function($nombre, $apodo=null){
 	}
 });
 
+*/
