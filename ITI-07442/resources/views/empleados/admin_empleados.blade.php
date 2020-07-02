@@ -35,6 +35,7 @@
                                                 <th>Sexo</th>
                                                 <th>Estado civil</th>
                                                 <th>Teléfono</th>
+                                                <th>Departamento</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -50,6 +51,7 @@
                                             <td>{{$empleado->sexo}}</td>
                                             <td>{{$empleado->estado_civil}}</td>
                                             <td>{{$empleado->telefono}}</td>
+                                            <td>{{$empleado->departamento}}</td>
                                             <td>
                                               <div style="display: flex;">
                                                 <a href="{{ url('empleados/'.$empleado->id.'/edit') }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>

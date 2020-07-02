@@ -56,36 +56,50 @@
 <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 
 
+</head>
+
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col menu_fixed">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{url('/')}}" class="site_title"><span style="font_size: 19px;">Sistema control de empleados</span></a>
+                        <a href="{{ url('/empleados') }}" class="site_title"><span style="font-size: 15px;">Sistema control de empleados</span></a>
                     </div>
                     <div class="clearfix"></div>
-                    <br/>
+                    <br />
 
-                    <!--Sidebar menu-->
+                    <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <h3>Menu</h3>
                             <ul class="nav side-menu">
-                                <li><a href="{{url('dashboard')}}">Inicio</a></li>
+                                <li><a href="{{ url('/') }}">Inicio</a></li>
                             </ul>
+
                             <ul class="nav side-menu">
-                                <li><a><i class="fas fa-user-shield"></i>&nbsp;&nbsp;&nbsp;&nbsp;Empleados<span style="float: right" class="fas fa-chevron-down"></span></a>
+                                <li>
+                                    <a><i class="fas fa-user-shield"></i>&nbsp;&nbsp;&nbsp;&nbsp;Empleados<span style="float: right;" class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{url('empleados/create')}}">Agregar Empledado</a></li>
-                                        <li><a href="{{url('empleados')}}">Consultar Empledados</a></li>
+                                        <li><a href="{{ url('empleados/create') }}">Agregar empleado</a></li>
+                                        <li><a href="{{ url('empleados') }}">Consultar empleado</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fas fa-cube"></i>&nbsp;&nbsp;&nbsp;&nbsp;Departamentos<span style="float: right;" class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{{ url('departamentos/create') }}">Agregar departamento</a></li>
+                                        <li><a href="{{ url('departamentos') }}">Consultar departamento</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <!--Sidebar menu-->
-                    <!--Menu footer buttons--->
+
+                    <!-- /.sidebar menu -->
+
+                    <!-- /menu footer buttons -->
+
                     <div class="sidebar-footer hidden-small">
                         <a data-toggle="tooltip" data-placement="top">
                             <span class="glyphicon" aria-hidden="true"></span>
@@ -96,22 +110,30 @@
                         <a href="/password" data-toggle="tooltip" data-placement="top">
                             <i class="fas fa-key"></i>
                         </a>
+                        
+
                     </div>
+                    <!-- /menu footer buttons -->
                 </div>
             </div>
 
-            <!--Muestra el contenido de la seecion contnido-->
+            <!-- MUESTRA EL CONTENIDO DE LA SECCIÓN "conteido" LA CUAL PUEDE SER: LISTADO O ALTA DE EMPLEADOS. -->
             @yield('contenido')
+
             @yield('scripts')
-            <!--/page content-->
-            <!--foote content-->
+            <!-- /.page content -->
+
+            <!-- footer content -->
             <footer>
                 <div class="pull-right">
+
                 </div>
-                <div class=clearfix></div>
+                <div class="clearfix"></div>
             </footer>
+            <!-- /.footer content -->
         </div>
     </div>
+  
 </body>
 </html>
 

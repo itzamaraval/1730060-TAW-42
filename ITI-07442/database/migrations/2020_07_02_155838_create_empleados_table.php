@@ -22,9 +22,10 @@ class CreateEmpleadosTable extends Migration
             $table->string('lugar_nacimiento');
             $table->enum('sexo', ['masculino', 'femenino', 'no definido']);
             $table->enum('estado_civil', ['soltero', 'casado']);
-            $table->integer('telefono');
+            $table->string('telefono');
+            $table->string('departamento');
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

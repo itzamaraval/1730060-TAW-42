@@ -9,6 +9,8 @@ Route::get('/', function () {
 
 //Vista para el controlador de empleados
 Route::resource('empleados','empleadosController');
+//Vista para el controlador de departamentos
+Route::resource('departamentos','departamentosController');
 
 
 

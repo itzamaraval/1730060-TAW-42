@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Empleado;
+use App\Departamento;
 
 //Listar empleados
 Route::get('empleados', function(){
@@ -10,7 +11,7 @@ Route::get('empleados', function(){
 	return $empleados;
 });
 
-//Ruta para guardar nuevos empleaados y recibir data (fase 1)
+//Ruta para guardar nuevos empleados y recibir data (fase 1)
 Route::post('empleados', function(Request $request){
 	//Verificamos que los datos enviados se reciban bien en la base de datos, para esto se utiliza request
 
@@ -60,7 +61,8 @@ Route::put('empleados/{id}',function(Request $request, $id){
     	'lugar_nacimiento'=>'required|max:50',
     	'sexo'=>'required|max:50',
 		'estado_civil'=>'required|max:50',
-		'telefono'=>'required|numeric' 
+		'telefono'=>'required|numeric',
+		'departamento'=>'required|max:300' 
 
 	]);
 
@@ -75,6 +77,7 @@ Route::put('empleados/{id}',function(Request $request, $id){
 	$empleado->sexo = $request->input('sexo');
 	$empleado->estado_civil = $request->input('estado_civil');
 	$empleado->telefono = $request->input('telefono');
+	$empleado->departamento = $request->input('departamento');
 
 	$empleado->save();
 	return "Empleado Actualizado";
@@ -87,4 +90,43 @@ Route::delete('empleados/{id}',function($id){
 	
 	$empleado->delete();
 	return "Empleado Eliminado";
+});
+
+//-------------DEPARTAMENTOS--------------
+
+//Listar departamentos
+Route::get('departamentos', function(){
+	$departamentos = Departamento::get();
+	return $departamentos;
+});
+
+//Ruta para guardar nuevos departamentos y recibir data (fase 1)
+Route::post('departamentos', function(Request $request){
+	//Verificamos que los datos enviados se reciban bien en la base de datos, para esto se utiliza request
+
+	//Llenar los parametros usando Request y guardarlo en la tabla de la bd
+	$departamento = new Departamento();
+	$departamento->nombre = $request->input('nombre');
+	$departamento->save();
+
+	return "Departamento creado";
+
+});
+
+//Ruta para actualizar departamento
+Route::put('departamentos/{id}',function(Request $request, $id){
+	$departamento=Departamento::findOrFail($id);
+	//return $departamento;
+	$departamento->nombre = $request->input('nombre');
+	$departamento->save();
+	return "Departamento Actualizado";
+});
+
+//Ruta para eliminar departamentos
+Route::delete('departamentos/{id}',function($id){
+
+	$departamento=Departamento::findOrFail($id);
+	
+	$departamento->delete();
+	return "Departamento Eliminado";
 });

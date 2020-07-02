@@ -476,9 +476,12 @@ class ComposerStaticInitf94f0630ffa02f3dcb646a1af64dba52
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Departamento' => __DIR__ . '/../..' . '/app/Departamento.php',
         'App\\Empleado' => __DIR__ . '/../..' . '/app/Empleado.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DepartamentosController' => __DIR__ . '/../..' . '/app/Http/Controllers/departamentosController.php',
+        'App\\Http\\Controllers\\EmpleadosController' => __DIR__ . '/../..' . '/app/Http/Controllers/empleadosController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',

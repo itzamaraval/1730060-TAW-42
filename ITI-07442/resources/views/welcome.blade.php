@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('empleados') }}">Empleados</a>
+                <a href="/api/empleados/">Empleados</a>
                 </div>
             </div>
         </div>

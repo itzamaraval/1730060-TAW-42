@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empleado;
+use App\Departamento;
 use Illuminate\Http\Request;
 
 class EmpleadosController extends Controller
@@ -27,7 +28,8 @@ class EmpleadosController extends Controller
     public function create()
     {
         //
-        return view('empleados.alta_empleado');
+        $departamentos = Departamento::all();
+        return view('empleados.alta_empleado',compact('departamentos'));
     }
 
     /**
@@ -63,9 +65,14 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
-        //
-        $empleado = Empleado::findOrFail($id);
-        return view('empleados.edit', compact('empleado'));
+        $empleados=Empleado::findOrFail($id);
+        //mandamos todo lo que contiene la tabla departamento a la variable items
+        
+        $departamentos = Departamento::all();
+        
+
+      //Mostrar la vista
+        return view('empleados.edit',compact('empleados','departamentos'));//enviamos a la vista de edit las variables empleados e items
 
     }
 
