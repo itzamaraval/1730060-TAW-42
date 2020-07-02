@@ -6,6 +6,9 @@ use App\Empleado;
 use App\Departamento;
 use Illuminate\Http\Request;
 
+// UTILIZAR COMPLEMENTO DB PARA CONSULTAS
+use DB;
+
 class EmpleadosController extends Controller
 {
     /**
@@ -16,7 +19,13 @@ class EmpleadosController extends Controller
     public function index()
     {
         //
-        $empleados = Empleado::all();
+        //$empleados = Empleado::all();
+        // REALIZAR UNA CONSULTA PARA UNIR LA LLAVE FORANEA DEL DEPARTAMENTO Y MOSTRAR EL NOMBRE DEL DEPARTAMENTO
+        $empleados = DB::table('empleados')
+            ->join('departamentos', 'departamentos.id', '=', 'empleados.departamento')
+            ->select('empleados.*', 'departamentos.nombre AS departamento_nombre')
+            ->get();
+        
         return view('empleados.admin_empleados', compact('empleados'));
     }
 
