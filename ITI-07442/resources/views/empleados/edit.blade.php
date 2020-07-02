@@ -1,56 +1,59 @@
 @extends('layout.patron')
-@section ('titulo', 'Agregar de empleado')
+@section ('titulo', 'Editar de empleado')
 @section ('contenido')
     <div class="righ_col" role="main">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3> Agregar empleado</h3>
+                        <h3> Editar empleado</h3>
                     </div>
                 </div>
             </div>
             <div class="clearfix"></div>  
+            <!-- Formulario para edición de empleados -->
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Datos de empleados</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                <form action="{{ url('/empleados')}}" enctype="multipart/form-data" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+                <!-- Se obtiene el ID del empleado a editar -->
+                <form action="{{ url('/empleados/' . $empleado->id)}}" enctype="multipart/form-data" method="POST" data-parsley-validate class="form-horizontal form-label-left">
                     {{csrf_field()}}
+                    {{ method_field('PATCH') }}
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="nombre"> Nombre(s) <spam class="required">*</spam>
                         </label>
                         <div class="col-md-6 col-sm-6">
-                            <input type="text" id="nombre" name="nombre" required="required" class="form-control">
+                            <input type="text" id="nombre" name="nombre" value="{{ $empleado->nombre }}" required="required" class="form-control">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="apellidos"> Apellido(s) <spam class="required">*</spam>
                         </label>
                         <div class="col-md-6 col-sm-6">
-                            <input type="text" id="apellidos" name="apellidos" required="required" class="form-control">
+                            <input type="text" id="apellidos" value="{{ $empleado->apellidos }}" name="apellidos" required="required" class="form-control">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="cedula"> Cédula <spam class="required">*</spam>
                         </label>
                         <div class="col-md-6 col-sm-6">
-                            <input type="text" id="cedula" name="cedula" required="required" class="form-control">
+                            <input type="text" id="cedula" value="{{ $empleado->cedula }}" name="cedula" required="required" class="form-control">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="email"> Correo electrónico <spam class="required">*</spam>
                         </label>
                         <div class="col-md-6 col-sm-6">
-                            <input type="text" id="email" name="email" required="required" class="form-control">
+                            <input type="text" id="email" value="{{ $empleado->email }}" name="email" required="required" class="form-control">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="lugar_nacimiento"> Lugar de nacimiento <spam class="required">*</spam>
                         </label>
                         <div class="col-md-6 col-sm-6">
-                            <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" required="required" class="form-control">
+                            <input type="text" id="lugar_nacimiento" value="{{ $empleado->lugar_nacimiento }}" name="lugar_nacimiento" required="required" class="form-control">
                         </div>
                     </div>
                     <div class="item form-group">
@@ -88,7 +91,7 @@
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="telefono"> Teléfono <spam class="required">*</spam>
                         </label>
                         <div class="col-md-6 col-sm-6">
-                            <input type="text" id="telefono" name="telefono" required="required" class="form-control">
+                            <input type="number" value="{{ $empleado->telefono }}" id="telefono" name="telefono" required="required" class="form-control">
                         </div>
                     </div>
                     <div class="In_solid"></div>
@@ -102,4 +105,4 @@
             </div>
         </div>
     </div>
-@endsection       
+@endsection

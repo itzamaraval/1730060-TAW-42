@@ -2,49 +2,109 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Empleado;
-use DB;
+use Illuminate\Http\Request;
 
-class empleadosController extends Controller
+class EmpleadosController extends Controller
 {
-    public function index(){
-        //Obtener todos los empleados de la tabla de la BD
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
         $empleados = Empleado::all();
-        //Mostrar vista de la consulta empleados
         return view('empleados.admin_empleados', compact('empleados'));
     }
 
-    //creación de nuevo empleado
-    public function create(){
-        //mostrar formulario para crear empleado
-        return view('empleados.alta_empleado', compact('empleados'));
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        return view('empleados.alta_empleado');
     }
 
-    //almacenar empleados
-    public function store(Request $request){
-        //retirar los datos del Request
-        $datosEmpleado = request()->except('empleado');
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
 
-        //insertar en la tabla empleado los datos para la creación de un nuevo registro
-        $id = DB::table('empleados')->insertGetId($datosEmpleado);
-        Alert::success('Datos guardados con éxito.');
-        return redirect ('empleados');
+        $empleado = request()->except('_token');
+        Empleado::insert($empleado);
     }
 
-    //editar empleados
-    public function edit($id){
-        //editar empleados y mandar a la vista la información
-        $empleados = Empleado::findOrFail($id);
-
-        //mostrar vista
-        return view('empleados.editar_empleado', compact('empleado'));
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Empleado  $empleados
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Empleados $empleados)
+    {
+        //
     }
 
-    //eliminar empleado
-    public function destroy($id){
-        Alert::success('Datoss eliminados de la base de datos.');
-        return redirect ('empleados');
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Empleados  $empleados
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+        $empleado = Empleado::findOrFail($id);
+        return view('empleados.edit', compact('empleado'));
+
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Empleado  $empleados
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+        /*$validar = $request->validate(['email'=>'required|max:50|unique:empleados,email,' . $id]);
+        if ($validar->fails()) {
+            $empleado = ["email" => "Correo ocupado"];
+            return view('empleados.edit', compact('empleado'));
+        } else {
+            $empleado = request()->except(['_token', '_method']);
+            Empleados::where('id', '=', $id)->update($empleado);
+            return redirect('empleados');
+        }*/
+
+        $empleado = request()->except(['_token', '_method']);
+        Empleado::where('id', '=', $id)->update($empleado);
+        return redirect('empleados');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Empleado  $empleados
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+        Empleado::destroy($id);
+        return redirect('empleados');
+
+    }
 }

@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/', function () {
+    return view('layout.patron');
+});
+
 //Vista para el controlador de empleados
 Route::resource('empleados','empleadosController');
 
