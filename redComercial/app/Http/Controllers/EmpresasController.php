@@ -12,6 +12,7 @@ class EmpresasController extends Controller
     
     public function list(Request $request){
       return Empresas::get();
+      return view('empleados.admin_empleados', compact('empleados'));
     }
     
     public function create(Request $request){
@@ -42,7 +43,16 @@ class EmpresasController extends Controller
       ]);
 
         $empresas = Empresas::create($request->all());    
-        return $empresas;
+        return view('empresas.alta_empresa',compact('ciudad'));
+    }
+
+    public function edit($id)
+    {
+        $empresas=Empresas::findOrFail($id);
+        $ciudades = Ciudades::all();
+        
+        return view('empresas.edit',compact('empresas','ciudades'));
+
     }
     
     public function update(Request $request, $id){
@@ -75,13 +85,14 @@ class EmpresasController extends Controller
         $empresas = Empresas::findOrFail($id);
         $input = $request->all();
         $empresas->fill($input)->save();
-        return $empresas;
+        return redirect('empleados');
     }
     
    
     public function delete(Request $request, $id){
         $empresas = Empresas::findOrFail($id);
         $empresas->delete();
+        return redirect('empleados');
     }
 }
  ?>
