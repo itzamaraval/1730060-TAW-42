@@ -28,7 +28,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" href="{{ route('home') }}">
-        <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <img src="{{ asset('argon') }}/img/brand/MarketPlaceBlanco.png" class="navbar-brand-img" alt="...">
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -42,7 +42,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                 <div class=" dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome!</h6>
+                    <h6 class="text-overflow m-0">¡Bienvenido!</h6>
                 </div>
                 <a href=href="{{ route('profile.edit') }}" class="dropdown-item">
                     <i class="ni ni-single-02"></i>
@@ -52,14 +52,14 @@
                     <i class="ni ni-settings-gear-65"></i>
                     <span>Configuración</span>
                 </a>
-                <!--<a href="#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                     <i class="ni ni-calendar-grid-58"></i>
                     <span>Actividad</span>
                 </a>
                 <a href="#" class="dropdown-item">
                     <i class="ni ni-support-16"></i>
                     <span>Ayuda</span>
-                </a>-->
+                </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
@@ -105,7 +105,7 @@
                     <i class="ni ni-tv-2 text-primary"></i> Dashboard
                 </a>
             </li>
-            <li class="nav-item">
+           < <li class="nav-item">
                 <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                     <i class="fab fa-laravel" style="color: #f4645f;"></i>
                     <span class="nav-link-text" style="color: #f4645f;">Laravel Examples</span>
@@ -147,17 +147,17 @@
                     <i class="ni ni-circle-08 text-pink"></i> Register
                 </a>
             </li>
-            <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
+           <!-- <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
                 <a class="nav-link" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
                     <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
                 </a>
             </li>
         </ul>
-        <!-- Divider -->
+         Divider 
         <hr class="my-3">
-        <!-- Heading -->
+        <!-- Heading 
         <h6 class="navbar-heading text-muted">Documentation</h6>
-        <!-- Navigation -->
+        <!-- Navigation 
         <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
                 <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
@@ -174,7 +174,7 @@
                     <i class="ni ni-ui-04"></i> Components
                 </a>
             </li>
-        </ul>
+        </ul>-->
     </div>
 </div>
 </nav>                
@@ -393,35 +393,7 @@
         </div>
     </div>
         
-    <footer class="footer">
-<div class="row align-items-center justify-content-xl-between">
-<div class="col-xl-6">
-    <div class="copyright text-center text-xl-left text-muted">
-        © 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a> &amp;
-        <a href="https://www.updivision.com" class="font-weight-bold ml-1" target="_blank">Updivision</a>
-    </div>
-</div>
-<div class="col-xl-6">
-    <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-        <li class="nav-item">
-            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-        </li>
-        <li class="nav-item">
-            <a href="https://www.updivision.com" class="nav-link" target="_blank">Updivision</a>
-        </li>
-        <li class="nav-item">
-            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-        </li>
-        <li class="nav-item">
-            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-        </li>
-        <li class="nav-item">
-            <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-        </li>
-    </ul>
-</div>
-</div>
-</footer>    
+    @include('layouts.footers.auth')
 </div>
     </div>
 

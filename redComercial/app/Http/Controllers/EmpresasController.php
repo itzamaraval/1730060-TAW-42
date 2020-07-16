@@ -78,6 +78,7 @@ class EmpresasController extends Controller
         return $empresas;
     }
     
+   
     public function delete(Request $request, $id){
         $empresas = Empresas::findOrFail($id);
         $empresas->delete();
