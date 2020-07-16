@@ -49888,8 +49888,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\itzamaraval\Desktop\redComercial\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\itzamaraval\Desktop\redComercial\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\itzamaraval\Documents\GitHub\1730060-TAW-42\redComercial\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\itzamaraval\Documents\GitHub\1730060-TAW-42\redComercial\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
