@@ -3,16 +3,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empresas;
-
+use DB;
 class EmpresasController extends Controller
 {
     public function get(Request $request, $id){
       return Empresas::findOrFail($id);
     }
     
-    public function list(Request $request){
-      return Empresas::get();
-      return view('empleados.admin_empleados', compact('empleados'));
+    public function adminempresa(Request $request){
+      $empresas = DB::table('empresas')
+            ->select('empresas.*')
+            ->get();
+      return view('empresas.adminempresa', compact('empresas'));
     }
     
     public function create(Request $request){
@@ -43,7 +45,7 @@ class EmpresasController extends Controller
       ]);
 
         $empresas = Empresas::create($request->all());    
-        return view('empresas.alta_empresa',compact('ciudad'));
+        return view('empresas.create',compact('crear'));
     }
 
     public function edit($id)
@@ -51,7 +53,7 @@ class EmpresasController extends Controller
         $empresas=Empresas::findOrFail($id);
         $ciudades = Ciudades::all();
         
-        return view('empresas.edit',compact('empresas','ciudades'));
+        return view('empresas.edit',compact('empresas'));
 
     }
     
@@ -85,14 +87,14 @@ class EmpresasController extends Controller
         $empresas = Empresas::findOrFail($id);
         $input = $request->all();
         $empresas->fill($input)->save();
-        return redirect('empleados');
+        return redirect('empresas');
     }
     
    
     public function delete(Request $request, $id){
         $empresas = Empresas::findOrFail($id);
         $empresas->delete();
-        return redirect('empleados');
+        return redirect('empresas');
     }
 }
  ?>

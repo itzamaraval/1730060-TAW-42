@@ -112,7 +112,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('empresas.adminempresa') }}">
                         <i class="ni ni-building text-blue"></i> {{ __('Empresas') }}
                     </a>
                 </li>

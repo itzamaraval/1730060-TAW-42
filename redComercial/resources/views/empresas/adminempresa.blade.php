@@ -1,5 +1,11 @@
-<div class="row mt-5">
-            <div class="col-xl-8 mb-5 mb-xl-0">
+@extends('layouts.app', ['title' => __('Empresas')])
+
+@section('content')
+@include('layouts.headers.blank')  
+
+<div class="container-fluid mt--6">
+    <div class="row">
+            <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -7,18 +13,17 @@
                                 <h3 class="mb-0">Listado de empresas</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                                <a href="{{ route('empresas.create') }}" class="btn btn-sm btn-primary">Nueva Empresa</a>
                             </div>
                         </div>
                     </div>
-                    <div class="table-responsive">
+                    <div class="table-responsive py-4">
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
+                        <table class="table table-flush"  id="datatable-basic">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Dirección</th>
-                                    <th scope="col">Giro</th>
                                     <th scope="col">RFC</th>
                                 </tr>
                             </thead>
@@ -28,7 +33,6 @@
                                           <tr>
                                             <td>{{$empresas->nombre}}</td>
                                             <td>{{$empresas->direccion}}</td>
-                                            <td>{{$empresas->giro}}</td>
                                             <td>{{$empresas->rfc}}</td>
                                             <td>
                                               <div style="display: flex;">
@@ -47,3 +51,8 @@
                     </div>
                 </div>
             </div>
+      
+    </div>
+    @include('layouts.footers.auth')
+    </div>
+@endsection
