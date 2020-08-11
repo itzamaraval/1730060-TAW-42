@@ -117,12 +117,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('productos.adminprod') }}">
                         <i class="ni ni-bag-17 text-orange"></i> {{ __('Productos') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('servicios.adminservicios') }}">
                         <i class="ni ni-delivery-fast text-info"></i> {{ __('Servicios') }}
                     </a>
                 </li>

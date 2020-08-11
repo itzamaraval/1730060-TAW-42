@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empresas;
+use App\Ciudades;
 use DB;
 class EmpresasController extends Controller
 {
@@ -18,7 +19,7 @@ class EmpresasController extends Controller
     }
     
     public function create(Request $request){
-        
+     
       $validatedData = $request->validate([
         'nombre' => 'required |max:191 ',
         'direccion' => 'required |max:191 ',
@@ -43,15 +44,15 @@ class EmpresasController extends Controller
         'id_ciudad.required' => 'id_ciudad is a required field.',
         'id_ciudad.max' => 'id_ciudad can only be 11 characters.',
       ]);
-
+        
         $empresas = Empresas::create($request->all());    
-        return view('empresas.create',compact('crear'));
+        return view('empresas.create');
     }
 
     public function edit($id)
     {
         $empresas=Empresas::findOrFail($id);
-        $ciudades = Ciudades::all();
+       
         
         return view('empresas.edit',compact('empresas'));
 

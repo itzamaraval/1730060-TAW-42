@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Empresas')])
+@extends('layouts.app', ['title' => __('Productos')])
 
 @section('content')
 @include('layouts.headers.blank')  
@@ -10,23 +10,23 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Listado de empresas</h3>
+                                <h3 class="mb-0">Listado de productos</h3>
                             </div>
                             <div class="col text-right">
-                                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#create">Nueva Empresa</button>
+                                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#create">Nuevo Producto</button>
                             </div>
                             <!-- Modal de registro-->
                                 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="createLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
-                                        <large class="modal-title" id="createLabel">{{ __('Registrar empresa') }}</large>
+                                        <large class="modal-title" id="createLabel">{{ __('Registrar producto') }}</large>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form method="post" action="{{ route('empresas.create') }}">
+                                    <form method="post" action="{{ route('productos.create') }}">
                                     @csrf
                                     @method('put')
                                         <!--nombre-->
@@ -43,93 +43,80 @@
                                                 </span>
                                             @endif
                                         </div>
-                                        <!--direccion-->
-                                        <div class="form-group{{ $errors->has('direccion') ? ' has-danger' : '' }}">
+                                        <!--descripción-->
+                                        <div class="form-group{{ $errors->has('descripcion') ? ' has-danger' : '' }}">
                                             <div class="input-group input-group-alternative mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
                                                 </div>
-                                                <input class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }}" placeholder="{{ __('Dirección') }}" type="text" name="direccion" value="{{ old('direccion') }}" required autofocus>
+                                                <input class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" placeholder="{{ __('Descripción') }}" type="text" name="descripcion" value="{{ old('descripcion') }}" required autofocus>
                                             </div>
-                                            @if ($errors->has('direccion'))
+                                            @if ($errors->has('descripcion'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('direccion') }}</strong>
+                                                    <strong>{{ $errors->first('descripcion') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
-                                        <!--url-->
-                                        <div class="form-group{{ $errors->has('url') ? ' has-danger' : '' }}">
+                                        <!--precio-->
+                                        <div class="form-group{{ $errors->has('precio') ? ' has-danger' : '' }}">
                                             <div class="input-group input-group-alternative mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-shop"></i></span>
                                                 </div>
-                                                <input class="form-control{{ $errors->has('url') ? ' is-invalid' : '' }}" placeholder="{{ __('Url') }}" type="text" name="url"  value="{{ old('url') }}" required autofocus>
+                                                <input class="form-control{{ $errors->has('precio') ? ' is-invalid' : '' }}" placeholder="{{ __('Precio') }}" type="text" name="precio"  value="{{ old('precio') }}" required autofocus>
                                             </div>
-                                            @if ($errors->has('url'))
+                                            @if ($errors->has('precio'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('url') }}</strong>
+                                                    <strong>{{ $errors->first('precio') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
-                                        <!--giro-->
-                                        <div class="form-group{{ $errors->has('giro') ? ' has-danger' : '' }}">
+                                        <!--stock-->
+                                        <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">
                                             <div class="input-group input-group-alternative mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-tag"></i></span>
                                                 </div>
-                                                <input class="form-control{{ $errors->has('giro') ? ' is-invalid' : '' }}" placeholder="{{ __('Giro') }}" type="text" name="giro" value="{{ old('giro') }}" required autofocus>
+                                                <input class="form-control{{ $errors->has('stock') ? ' is-invalid' : '' }}" placeholder="{{ __('Stock') }}" type="text" name="stock" value="{{ old('stock') }}" required autofocus>
                                             </div>
-                                            @if ($errors->has('giro'))
+                                            @if ($errors->has('stock'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('giro') }}</strong>
+                                                    <strong>{{ $errors->first('stock') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
-                                        <!--rfc-->
-                                        <div class="form-group{{ $errors->has('rfc') ? ' has-danger' : '' }}">
+                                        <!--Categoría-->
+                                        <div class="form-group{{ $errors->has('categoria') ? ' has-danger' : '' }}">
                                             <div class="input-group input-group-alternative mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-archive-2"></i></span>
                                                 </div>
-                                                <input class="form-control{{ $errors->has('rfc') ? ' is-invalid' : '' }}" placeholder="{{ __('RFC') }}" type="text" name="rfc" value="{{ old('rfc') }}" required>
+                                                <input class="form-control{{ $errors->has('categoria') ? ' is-invalid' : '' }}" placeholder="{{ __('Categoría') }}" type="text" name="categoria" value="{{ old('categoria') }}" required>
                                             </div>
-                                            @if ($errors->has('rfc'))
+                                            @if ($errors->has('categoria'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('rfc') }}</strong>
+                                                    <strong>{{ $errors->first('categoria') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
-                                        <!--status-->
-                                        <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
+                                        <!--empresa-->
+                                        <div class="form-group{{ $errors->has('empresa') ? ' has-danger' : '' }}">
                                             <div class="input-group input-group-alternative mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-archive-2"></i></span>
                                                 </div>
-                                                <input class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" placeholder="{{ __('Estatus') }}" type="text" name="status" value="{{ old('status') }}" required>
+                                                <input class="form-control{{ $errors->has('empresa') ? ' is-invalid' : '' }}" placeholder="{{ __('Empresa') }}" type="text" name="empresa" value="{{ old('empresa') }}" required>
                                             </div>
-                                            @if ($errors->has('status'))
+                                            @if ($errors->has('empresa'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('status') }}</strong>
+                                                    <strong>{{ $errors->first('empresa') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
-                                         <!--ciudad-->
-                                         <div class="form-group{{ $errors->has('ciudad') ? ' has-danger' : '' }}">
-                                            <div class="input-group input-group-alternative mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="ni ni-archive-2"></i></span>
-                                                </div>
-                                                <input class="form-control{{ $errors->has('ciudad') ? ' is-invalid' : '' }}" placeholder="{{ __('Ciudad') }}" type="text" name="ciudad" value="{{ old('ciudad') }}" required>
-                                            </div>
-                                            @if ($errors->has('ciudad'))
-                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('ciudad') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
+                                        
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-success mt-4">{{ __('Registrar empresa') }}</button>
+                                        <button type="submit" class="btn btn-success mt-4">{{ __('Registrar producto') }}</button>
                                     </div>
                                         
                                     </form>
@@ -141,28 +128,30 @@
                         </div>
                     </div>
                     <div class="table-responsive py-4">
-                        <!-- Projects table -->
+                        <!-- productos table -->
                         <table class="table table-flush dataTables_wrapper dt-bootstrapp4"  id="datatable-buttons">
                             <thead class="thead-light">
                                
                                 <tr>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Dirección</th>
-                                    <th scope="col">RFC</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Stock</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
                             </thead>
-                            <!-- Lleando de tabla con los empleados registrador -->
+                            <!-- Lleando de tabla con los productos registrados -->
                             <tbody>
-                                          @foreach($empresas as $empresas)
+                                          @foreach($productos as $productos)
                                           <tr>
-                                            <td>{{$empresas->nombre}}</td>
-                                            <td>{{$empresas->direccion}}</td>
-                                            <td>{{$empresas->rfc}}</td>
+                                            <td>{{$productos->nombre}}</td>
+                                            <td>{{$productos->descripcion}}</td>
+                                            <td>{{$productos->precio}}</td>
+                                            <td>{{$productos->stock}}</td>
                                             <td>
                                               <div style="display: flex;">
-                                                <a href="{{ url('empresas/'.$empresas->id.'/edit') }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                                                <form action="{{ url('/empresas/'. $empresas->id) }}" method="POST">
+                                                <a href="{{ url('productos/'.$productos->id.'/edit') }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                                <form action="{{ url('/productos/'. $productos->id) }}" method="POST">
                                                   {{ csrf_field() }}
                                                   {{ method_field('DELETE') }}
                                                   <button class="btn btn-danger"><i class="fas fa-trash"></i></button>

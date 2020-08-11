@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Servicios;
+use App\Empresas;
+use App\Ciudades;
+use DB;
 
 class ServiciosController extends Controller
 {
@@ -10,8 +13,11 @@ class ServiciosController extends Controller
       return Servicios::findOrFail($id);
     }
     
-    public function list(Request $request){
-      return Servicios::get();
+    public function adminservicios(Request $request){
+      $servicios = DB::table('servicios')
+      ->select('servicios.*')
+      ->get();
+      return view('servicios.adminservicios', compact('servicios'));
     }
     
     public function create(Request $request){

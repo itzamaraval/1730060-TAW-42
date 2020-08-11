@@ -3,15 +3,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Productos;
-
+use App\Empresas;
+use App\Ciudades;
+use DB;
 class ProductosController extends Controller
 {
     public function get(Request $request, $id){
       return Productos::findOrFail($id);
     }
     
-    public function list(Request $request){
-      return Productos::get();
+    public function adminprod(Request $request){
+      $productos = DB::table('productos')
+      ->select('productos.*')
+      ->get();
+      return view('productos.adminprod', compact('productos'));
     }
     
     public function create(Request $request){

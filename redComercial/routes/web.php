@@ -30,6 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 	Route::get('empresas', ['as' => 'empresas.adminempresa', 'uses' => 'EmpresasController@adminempresa']);
-	Route::put('empresas', ['as' => 'empresas.edit', 'uses' => 'EmpresasController@edit']);
+	Route::put('empresas', ['as' => 'empresas.create', 'uses' => 'EmpresasController@create']);
+	Route::get('productos', ['as' => 'productos.adminprod', 'uses' => 'ProductosController@adminprod']);
+	Route::put('productos', ['as' => 'productos.create', 'uses' => 'ProductosController@create']);
+	Route::get('servicios', ['as' => 'servicios.adminservicios', 'uses' => 'ServiciosController@adminservicios']);
+	Route::put('servicios', ['as' => 'servicios.create', 'uses' => 'ServiciosController@create']);
+	Route::put('register', ['as' => 'register', 'uses' => 'UserController@create']);
 });
 
